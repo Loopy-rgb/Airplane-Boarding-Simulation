@@ -97,7 +97,7 @@ To develop, verify, and validate an agent-based discrete-time simulation framewo
 
 ### Phase 1: Data Collection & Parameter Calibration
 All physical and stochastic parameters are decoupled into a centralized YAML configuration file (`config.yaml`). Parameters are labeled `ASSUMED` in the config unless a direct citation exists:
-* **Row Pitch:** $0.79\text{ m}$ (Airbus A320 standard 31-inch pitch — Airbus Aircraft Characteristics document).
+* **Row Pitch:** $0.79\text{ m}$ — **ASSUMED** (consistent with Airbus A320 standard 31-inch economy pitch; cite the specific Airbus AC page if verified).
 * **Walking Speed:** $v \sim \mathcal{N}(0.8, 0.15^2)\text{ m/s}$, clipped at $v_{\min} = 0.4\text{ m/s}$. The $0.8\text{ m/s}$ mean is informed by Schultz (2018), who reports a fixed $0.8\text{ m/s}$ aisle speed; the Normal distribution form is an **ASSUMED** extension for inter-passenger variability.
 * **Luggage Stowage Time:** Lognormal distribution per bag (mean $\approx 9\text{ s}$, SD $\approx 4\text{ s}$) — **ASSUMED** engineering default. (Schultz's (2018) empirical Weibull fit gives a mean of approximately $13.9\text{ s}$; we use the lower default, which is configurable.)
 * **Seat Interference Delay:** $\mathcal{U}(4, 10)\text{ seconds}$ per blocking seated passenger — **ASSUMED**.
@@ -120,7 +120,7 @@ To eliminate random demographic noise between strategies, each replication seeds
 * **Automated Unit Tests:** 16 test cases in `pytest` verifying invariants (no shared cells, monotonic movement, seat uniqueness, exact permutation validity). Runtime invariant assertions are enabled via `test_mode=True`.
 * **Literature Benchmark:** Strategy **rankings** are validated against Steffen & Hotchkiss (2012) physical mock-cabin trials. Absolute boarding times are not directly compared due to the smaller 12-row cabin used in that experiment.
 * **Statistical Tests:**
-  * **95% Bootstrap Confidence Intervals** for mean boarding time per strategy per condition.
+  * **95% Bootstrap Confidence Intervals** for the mean difference between each pair of strategies per condition.
   * **Pairwise paired $t$-tests** between all $\binom{4}{2} = 6$ strategy pairs with plain **Bonferroni** $p$-value correction ($\alpha = 0.05$).
   * **Cohen's $d$** effect size for each pair.
   * **One-way ANOVA** (omnibus test; used as an approximation of repeated-measures ANOVA).
@@ -161,7 +161,7 @@ To eliminate random demographic noise between strategies, each replication seeds
 |---|:---:|---|
 | **M1: Foundation & Cabin Architecture** | Week 1 | Configuration schema (`config.yaml`), `Cabin` seat layout, `Passenger` dataclass, and single-passenger kinematic unit tests. |
 | **M2: Simulation Engine & Strategies** | Week 2 | Time-step engine loop, cell transition logic, collision prevention, implementation of 4 boarding strategies, and invariant tests. |
-| **M3: Filipino Behavior Module** | Week 3 | Implementation of group travel, non-compliance, heavy baggage distributions, bayanihan luggage help, and seat-search delays. |
+| **M3: Filipino Behavior Module** | Week 3 | Implementation of group travel, non-compliance, late passengers, heavy baggage distributions, bayanihan luggage help, and seat-search delays. |
 | **M4: Experimentation & Statistical Suite**| Week 4 | Execution of Experiments 1–6 (200 replications each with CRN), CSV generation, paired $t$-tests, and chart rendering. |
 | **M5: Web Dashboard & Final Report** | Week 5 | Interactive Flask web dashboard, Jupyter analysis notebook, model validation documentation, and final report. |
 
@@ -187,5 +187,5 @@ The resulting framework provides Philippine airline operators with an objective,
 3. **Schultz, M.** (2018). *Field trial measurements to validate a stochastic aircraft boarding model*. Aerospace, 5(1), 27. https://doi.org/10.3390/aerospace5010027
 4. **Schultz, M.** (2018). *Implementation and application of a stochastic aircraft boarding model*. Transportation Research Part C: Emerging Technologies, 90, 334–349. https://doi.org/10.1016/j.trc.2018.03.016
 5. **Steffen, J. H.** (2008). *Optimal boarding method for airline passengers*. Journal of Air Transport Management, 14(3), 146–150.
-6. **Steffen, J. H., & Hotchkiss, J.** (2012). *Experimental test of airplane boarding methods*. Journal of Air Transport Management, 18(1), 64–67. https://doi.org/10.1016/j.jairtraman.2011.09.004
+6. **Steffen, J. H., & Hotchkiss, J.** (2012). *Experimental test of airplane boarding methods*. Journal of Air Transport Management, 18(1), 64–67. https://doi.org/10.1016/j.jairtraman.2011.10.003
 7. **Van den Briel, M. H. L., Villalobos, J. R., Hogg, G. L., Lindemann, T., & Mulé, A. V.** (2005). *America West Airlines develops efficient boarding strategies*. Interfaces, 35(3), 191–201.
