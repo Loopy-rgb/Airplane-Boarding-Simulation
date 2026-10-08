@@ -1,6 +1,4 @@
 """
-tests/test_strategies.py
-========================
 Unit tests for boarding strategy functions.
 
 Each strategy must return a valid permutation of all 180 passengers:
@@ -8,9 +6,6 @@ Each strategy must return a valid permutation of all 180 passengers:
   - No duplicates (by passenger id).
   - All passenger ids are present.
 
-NOTE (M1): Strategy stubs return [] for unimplemented strategies.
-Tests for unimplemented strategies are marked xfail.
-random_order is implemented in M1 and its test should pass now.
 """
 
 import pytest

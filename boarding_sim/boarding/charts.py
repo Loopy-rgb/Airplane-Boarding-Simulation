@@ -1,16 +1,10 @@
 """
-boarding/charts.py
-==================
 Matplotlib chart generators.  All functions save a PNG to *output_path*
-and return nothing.  Axes labels, titles, and colours follow the PRD §11
-"readable colours" requirement.
+and return nothing.  Axis labels, titles and colours are chosen for legibility in print.
 
-Charts implemented (M4 and M6)
--------------------------------
-M4:
+Charts
+------
   plot_boxplot_boarding_time  – Chart 1: boxplot by strategy
-
-M6 (stubs here, implemented in M6):
   plot_interference_bars      – Chart 2: aisle + seat events by strategy
   plot_compliance_line        – Chart 3: boarding time vs compliance rate
   plot_group_fraction_line    – Chart 4: boarding time vs group fraction
@@ -50,7 +44,7 @@ STRATEGY_COLORS: dict[str, str] = {
     "steffen":       "#9B59B6",   # purple
 }
 
-#: Scenario colours for side-by-side plots (M6).
+#: Scenario colours for side-by-side plots.
 SCENARIO_COLORS: dict[str, str] = {
     "baseline":   "#4C9BE8",
     "philippine": "#E74C3C",
@@ -149,7 +143,7 @@ def plot_boxplot_baseline_vs_philippine(
 ) -> None:
     """
     Side-by-side boxplot comparing baseline and Philippine scenarios
-    for each strategy (Chart 1 final version, produced in M5/M6).
+    for each strategy (Chart 1).
 
     Parameters
     ----------
@@ -219,7 +213,7 @@ def plot_boxplot_baseline_vs_philippine(
 
 
 # ---------------------------------------------------------------------------
-# Chart 2 – Bar chart of interference events (M6 stub)
+# Chart 2 – Bar chart of interference events
 # ---------------------------------------------------------------------------
 
 def plot_interference_bars(
@@ -284,7 +278,7 @@ def plot_interference_bars(
 
 
 # ---------------------------------------------------------------------------
-# Chart 3 – Compliance sweep line chart (M6 stub)
+# Chart 3 – Compliance sweep line chart
 # ---------------------------------------------------------------------------
 
 def plot_compliance_line(
@@ -315,7 +309,7 @@ def plot_compliance_line(
 
 
 # ---------------------------------------------------------------------------
-# Chart 4 – Group fraction sweep line chart (M6 stub)
+# Chart 4 – Group fraction sweep line chart
 # ---------------------------------------------------------------------------
 
 def plot_group_fraction_line(
@@ -346,7 +340,7 @@ def plot_group_fraction_line(
 
 
 # ---------------------------------------------------------------------------
-# Chart 5 – Sensitivity heatmap / table (M6 stub)
+# Chart 5 – Sensitivity heatmap / table
 # ---------------------------------------------------------------------------
 
 def plot_sensitivity_heatmap(
@@ -414,7 +408,7 @@ def plot_sensitivity_heatmap(
 
 
 # ---------------------------------------------------------------------------
-# Chart 6 – Ablation bar chart (M6 stub)
+# Chart 6 – Ablation bar chart
 # ---------------------------------------------------------------------------
 
 def plot_ablation_bars(

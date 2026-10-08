@@ -1,6 +1,4 @@
 """
-boarding/stats.py
-=================
 Statistical analysis of simulation results.
 
 Two test families are provided because CRN (common random numbers) makes
@@ -8,7 +6,7 @@ paired tests valid and more powerful:
 
   - **Paired t-test** (Welch) between every strategy pair, pairing on
     replication *i* so each pair uses the same passenger population.
-    Bonferroni-corrected.  This is the primary test (PRD §11).
+    Bonferroni-corrected.  This is the primary test.
 
   - **Mann-Whitney U** (non-parametric fallback) for robustness checking,
     since boarding time is not guaranteed normal.
@@ -169,7 +167,7 @@ def bootstrap_ci(
 
 
 # ---------------------------------------------------------------------------
-# Paired t-test (primary PRD §11 test — valid due to CRN)
+# Paired t-test (primary the model rules test — valid due to CRN)
 # ---------------------------------------------------------------------------
 
 def paired_ttest_pairwise(
@@ -442,7 +440,7 @@ def print_report(
     value_col: str = "total_boarding_time_s",
 ) -> None:
     """
-    Print a formatted statistical report to stdout (PRD §11).
+    Print a formatted statistical report to stdout.
 
     Sections
     --------

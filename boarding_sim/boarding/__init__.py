@@ -1,6 +1,4 @@
 """
-boarding/__init__.py
-====================
 Convenience re-exports for the boarding simulation package.
 Import the most-used public names so callers can write:
 

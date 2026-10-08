@@ -1,6 +1,4 @@
 """
-boarding/metrics.py
-===================
 Collects per-run metrics from a completed simulation run.
 
 Public interface

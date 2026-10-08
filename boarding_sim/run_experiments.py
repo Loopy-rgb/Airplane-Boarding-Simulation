@@ -1,6 +1,4 @@
 """
-run_experiments.py
-==================
 Experiments 2–6: Philippine scenario and sweep experiments.
 
 Usage
@@ -123,7 +121,7 @@ def run_exp3(base_cfg: dict) -> pd.DataFrame:
     try:
         plot_compliance_line(df_all, str(RESULTS_DIR / "fig3_compliance_line.png"))
     except NotImplementedError:
-        print("  Chart fig3 deferred to M6.")
+        print("  Chart fig3 could not be generated.")
 
     return df_all
 
@@ -162,7 +160,7 @@ def run_exp4(base_cfg: dict) -> pd.DataFrame:
     try:
         plot_group_fraction_line(df_all, str(RESULTS_DIR / "fig4_group_line.png"))
     except NotImplementedError:
-        print("  Chart fig4 deferred to M6.")
+        print("  Chart fig4 could not be generated.")
 
     return df_all
 
@@ -209,7 +207,7 @@ def run_exp5(base_cfg: dict) -> pd.DataFrame:
     try:
         plot_sensitivity_heatmap(df_all, str(RESULTS_DIR / "fig5_sensitivity_heatmap.png"))
     except NotImplementedError:
-        print("  Chart fig5 deferred to M6.")
+        print("  Chart fig5 could not be generated.")
 
     return df_all
 
@@ -273,7 +271,7 @@ def run_exp6(base_cfg: dict) -> pd.DataFrame:
     try:
         plot_ablation_bars(df_all, str(RESULTS_DIR / "fig6_ablation_bars.png"))
     except NotImplementedError:
-        print("  Chart fig6 deferred to M6.")
+        print("  Chart fig6 could not be generated.")
 
     return df_all
 

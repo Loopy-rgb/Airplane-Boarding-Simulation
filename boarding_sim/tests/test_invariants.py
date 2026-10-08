@@ -1,7 +1,5 @@
 """
-tests/test_invariants.py
-========================
-Tests that verify the four simulation invariants (PRD §6) hold across
+Tests that verify the four simulation invariants hold across
 50 random full runs.
 
 Invariants
@@ -15,7 +13,6 @@ Also tests:
 - Same seed twice gives identical results.
 - Aisle interference is counted once per episode (not per tick).
 
-All tests are live as of Milestone 2 (engine implemented).
 """
 
 import pytest

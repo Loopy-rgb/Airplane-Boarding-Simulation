@@ -34,7 +34,12 @@ boarding_sim/
 │   ├── metrics.py           # Per-run metric collection
 │   ├── experiments.py       # Replications, CRN, sweeps
 │   ├── stats.py             # Paired t-test, Mann-Whitney, ANOVA, rankings
+│   ├── charts.py            # Figure generation for all experiments
+│   ├── config_loader.py     # YAML loading + scenario merging
 │   └── animate.py           # Matplotlib GIF animation
+├── templates/
+│   └── index.html           # Web dashboard page
+├── web_app.py               # Flask interactive dashboard
 ├── tests/
 │   ├── test_single_passenger.py   # Hand-computed verification tests
 │   ├── test_two_same_row.py       # Seat interference tests
@@ -81,7 +86,7 @@ python run_experiments.py --exp 2
 ```bash
 python run_experiments.py
 ```
-Runs all six experiments. Takes ~15 minutes on a normal laptop (200 reps × 4 strategies per condition).
+Runs Experiments 2-6 (Experiment 1 is `run_baseline.py`). Takes ~15 minutes on a normal laptop (200 reps × 4 strategies per condition).
 
 ### 5. Single experiment
 ```bash
@@ -101,7 +106,14 @@ python boarding/animate.py --help
 ```
 Saves `results/anim_<strategy>_<scenario>.gif`.
 
-### 7. Analysis notebook
+### 7. Interactive web dashboard
+```bash
+python web_app.py
+```
+Then open <http://localhost:5050>. Pick a strategy, toggle the Filipino
+behaviour features, and watch the 2D cabin animation run live.
+
+### 8. Analysis notebook
 ```bash
 jupyter notebook analysis.ipynb
 ```
@@ -160,7 +172,7 @@ Philippine scenario. Each has an `enabled` flag.
 | Random | 1238 | 3 |
 | Back-to-Front | 1594 | 4 |
 
-Ranking consistent with Steffen (2008) and Milne & Kelly. All pairwise
+Ranking consistent with Steffen (2008) and Steffen & Hotchkiss (2012). All pairwise
 differences are statistically significant (paired t-test, Bonferroni-corrected,
 all p < 0.001; F(3, 796) = 8853, p < 0.001 by one-way ANOVA).
 
@@ -209,8 +221,8 @@ citations before submitting a formal report.
 ## Validation
 
 Expected qualitative results (baseline, based on published boarding research):
-- Random ≤ Back-to-Front (B2F is no faster than random, often worse). ✅
-- Outside-In and Steffen are the fastest strategies. ✅
+- Random ≤ Back-to-Front (B2F is no faster than random, often worse). Confirmed.
+- Outside-In and Steffen are the fastest strategies. Confirmed.
 
 `run_baseline.py` prints a warning if results contradict these expectations.
 

@@ -1,9 +1,6 @@
 """
-tests/test_single_passenger.py
-===============================
-Verification tests: hand-computable single-passenger scenarios (PRD §13).
+Verification tests: hand-computable single-passenger scenarios.
 
-Engine implemented in Milestone 2; all tests are live.
 """
 
 import pytest
@@ -33,7 +30,7 @@ def _single_run(row: int, letter: str, num_bags: int, stow_time: float,
 
 
 # ---------------------------------------------------------------------------
-# Test 1 – Row 1, seat C (PRD §13: exact hand-computed time)
+# Test 1 – Row 1, seat C (exact hand-computed time)
 # ---------------------------------------------------------------------------
 
 def test_single_passenger_row1_seat_c():
@@ -56,14 +53,14 @@ def test_single_passenger_row1_seat_c():
 
 
 # ---------------------------------------------------------------------------
-# Test 2 – Row 30, seat C (PRD §13: walk-time verification)
+# Test 2 – Row 30, seat C (walk-time verification)
 # ---------------------------------------------------------------------------
 
 def test_single_passenger_row30_walk_time():
     """
     Row 30 = cell 29.  The passenger must traverse 29 cells from the door.
 
-    PRD §13: 'walking time is approximately 29 * pitch / speed'.
+    Walking time should be about 29 * pitch / speed.
 
     Hand-computation for walk_speed=0.8 m/s, row_pitch=0.79 m:
       Each tick progress += 0.8.  Since 0.8 > 0.79, the passenger advances

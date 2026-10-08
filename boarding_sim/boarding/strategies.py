@@ -1,6 +1,4 @@
 """
-boarding/strategies.py
-======================
 Boarding-order strategies.  Each strategy is a function with the signature:
 
     strategy(passengers, rng, **kwargs) -> list[Passenger]
@@ -89,7 +87,7 @@ def back_to_front(
     rng : numpy.random.Generator
         Seeded RNG (used for within-zone shuffle).
     num_zones : int
-        Number of boarding zones (PRD default 5; configurable 3-6).
+        Number of boarding zones (the specification default 5; configurable 3-6).
 
     Returns
     -------

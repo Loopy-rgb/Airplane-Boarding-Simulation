@@ -1,6 +1,4 @@
 """
-web_app.py
-==========
 Flask dashboard for the Airplane Boarding Strategy Simulation.
 
 Usage

@@ -1,9 +1,7 @@
 """
-boarding/simulation.py
-======================
-Core time-step simulation engine (Milestone 2 – full implementation).
+Core time-step simulation engine.
 
-Rules enforced (PRD §6)
+Rules enforced
 -----------------------
 - dt = 1 s ticks.
 - Entry: one passenger every entry_interval s, if cell 0 is free.
@@ -213,7 +211,7 @@ def _start_seating(
 
     Count how many seats between *pax*'s seat and the aisle are already
     occupied.  For each blocker, draw a shuffle time from Uniform(low, high)
-    and add one seat_interference_event.  (PRD §6)
+    and add one seat_interference_event.
     """
     n_blockers = cabin.count_blockers(pax.row, pax.letter)
     total_shuffle = 0.0
@@ -468,7 +466,7 @@ def _assert_invariants(
     tick: int,
 ) -> None:
     """
-    Assert all four PRD §6 simulation invariants.
+    Assert all four simulation invariants.
 
     Called every tick when test_mode=True.  Raises AssertionError with a
     descriptive message on the first violation found.

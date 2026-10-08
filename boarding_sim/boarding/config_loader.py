@@ -1,6 +1,4 @@
 """
-boarding/config_loader.py
-=========================
 Loads config.yaml and merges a named scenario on top of the
 base configuration.
 

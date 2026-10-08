@@ -1,39 +1,19 @@
 """
-tests/test_two_same_row.py
-==========================
 Verification tests: two passengers in the same row.
 
-Cases
------
-Case A – C then A (aisle seated before window):
-  Passenger 0: seat C (no blockers)  → boards first.
-  Passenger 1: seat A (blockers: C then B; B is empty) → only C is seated.
-  Expected: **zero** seat interference events for passenger 1 because
-  seat B is empty; C is the blocker but the path A←B←aisle has B free.
+Seat A is the window, B the middle, C the aisle. To reach A a passenger
+must pass B and C, so a seat interference event is counted for each of
+those seats that is already occupied.
 
-  Wait – the PRD rule: check whether any seat BETWEEN the passenger's seat
-  and the aisle is already occupied.  Seat A must pass B then C.  In this
-  case C is already seated.  So passenger 1 (seat A) DOES have 1 blocker (C).
+Case A - C boards before A:
+  Passenger 0 takes seat C and is seated first.
+  Passenger 1 takes seat A. B is empty, C is occupied, so C must stand up.
+  Expected: 1 seat interference event.
 
-  Correction: The seat-interference count depends on which seats are occupied
-  between A and the aisle.  If only C is seated (B is empty), the path is
-  A → B(empty) → C(occupied) → aisle.  The blocking set for A is [C, B].
-  C is occupied → 1 seat interference event, extra shuffle for 1 blocker.
-
-  ACTUALLY re-read PRD §6: "Check whether any seat between the passenger's
-  seat and the aisle is already occupied."  For seat A, the seats between A
-  and the aisle are B and C.  B is empty, C is occupied → 1 blocker.
-
-  So:
-    Order C-then-A: passenger to A finds C occupied → 1 seat interference.
-    Corrected Case A expected: 1 seat interference event.
-
-Case B – A then C (window seated before aisle):
-  Passenger 0: seat A boards first → no one in B or C → 0 seat interference.
-  Passenger 1: seat C boards second → C is aisle, no one blocks C → 0 interference.
-  Expected: **zero** seat interference events total.
-
-NOTE (M1): Marked xfail until engine is implemented in M2/M3.
+Case B - A boards before C:
+  Passenger 0 takes seat A while B and C are empty.
+  Passenger 1 takes seat C, which nothing blocks.
+  Expected: 0 seat interference events.
 """
 
 import pytest

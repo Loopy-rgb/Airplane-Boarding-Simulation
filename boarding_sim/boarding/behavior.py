@@ -1,9 +1,7 @@
 """
-boarding/behavior.py
-====================
-Filipino passenger behaviour modifiers – Milestone 5 full implementation.
+Filipino passenger behaviour modifiers.
 
-Design principle (PRD §16)
+Design principle
 ---------------------------------
 The engine must be free of behaviour-specific ``if`` clutter.
 This module modifies *passenger attributes* and *queue order* **before**

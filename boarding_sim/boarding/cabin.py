@@ -1,6 +1,4 @@
 """
-boarding/cabin.py
-=================
 Defines the physical layout of the Airbus A320 cabin used in the
 simulation.
 

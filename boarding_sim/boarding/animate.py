@@ -1,6 +1,4 @@
 """
-boarding/animate.py
-===================
 Visualise a single boarding run as a Matplotlib animation.
 
 The animation shows a top-down (overhead) view of the cabin.

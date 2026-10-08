@@ -6,11 +6,10 @@
 #
 # Source labels:
 #   ASSUMED  – no published citation; reasonable engineering default
-#   [citation pending] – placeholder for a real paper the student will fill in
 # ============================================================
 
 cabin:
-  rows: 30                          # Airbus A320 economy rows [citation pending]
+  rows: 30                          # Airbus A320 single-aisle economy rows
   seat_letters: [A, B, C, D, E, F] # Left block A-B-C, right block D-E-F
   row_pitch_m: 0.79                 # ASSUMED (literature range 0.75-0.81 m)
 
@@ -38,8 +37,11 @@ passenger:
     zero_bags: 0
     per_bag:
       dist: lognormal
-      mean: 9                       # seconds (mean of underlying normal)
-      sd: 4                         # ASSUMED
+      mean: 9                       # ASSUMED - target mean of the lognormal
+      sd: 4                         # ASSUMED - target SD of the lognormal
+      # NOTE: mean/sd describe the distribution itself, not the underlying
+      # normal. simulation._lognormal_params() converts them to (mu, sigma)
+      # before sampling, so realised stow time averages 9 s with SD 4 s.
 
 strategies:
   back_to_front_zones: 5            # ASSUMED – number of boarding zones (3-6)

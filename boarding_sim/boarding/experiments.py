@@ -1,6 +1,4 @@
 """
-boarding/experiments.py
-=======================
 Runs replicated experiments using Common Random Numbers (CRN).
 
 Common Random Numbers design
@@ -133,7 +131,7 @@ def run_experiment(
 
             # 1. Strategy ordering
             #    Pass num_zones from config to back_to_front so the configurable
-            #    zone count in config.yaml is actually honoured (PRD §7).
+            #    zone count in config.yaml is actually honoured.
             strat_kwargs: dict = {}
             if name == "back_to_front":
                 strat_kwargs["num_zones"] = cfg.get("strategies", {}).get(

@@ -1,6 +1,4 @@
 """
-boarding/passenger.py
-=====================
 Defines the ``Passenger`` dataclass and the ``PassengerState`` enum.
 
 State machine

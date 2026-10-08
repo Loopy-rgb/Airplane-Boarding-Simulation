@@ -1,14 +1,12 @@
 """
-run_baseline.py
-===============
-Milestone 4 entry point: Experiment 1 – Baseline Comparison.
+Entry point for Experiment 1, the baseline comparison.
 
 Runs all four boarding strategies under the baseline scenario (no Filipino
 behaviour features) for 200 replications using Common Random Numbers, then:
   - Prints a summary statistics table to stdout.
   - Saves raw results to ``results/exp1_baseline.csv``.
   - Saves a boxplot to     ``results/fig1_boxplot_baseline.png``.
-  - Performs the PRD §13 qualitative validation check.
+  - Performs the Qualitative validation check against published findings.
 
 Usage
 -----
@@ -61,7 +59,7 @@ def _print_summary(df: pd.DataFrame) -> None:
 
 def _validate_ranking(df: pd.DataFrame) -> None:
     """
-    PRD §13 qualitative validation check.
+    Qualitative validation check against published findings.
 
     Expected ranking (based on published literature):
       Steffen ≈ Outside-In < Random ≤ Back-to-Front
@@ -98,7 +96,7 @@ def _validate_ranking(df: pd.DataFrame) -> None:
         for p in problems:
             print(f"     • {p}")
         print("     Investigate before proceeding. Do NOT tune parameters.")
-        print("     (PRD §13: 'if results contradict these, print a warning')")
+        print("     (ranking contradicts published findings)")
     else:
         print("  ✓  Qualitative ranking agrees with published findings.")
         label_means = {
@@ -175,7 +173,7 @@ def main() -> None:
     print()
     print("=" * 65)
     print("  Experiment 1 complete.  Run 'python run_experiments.py' for")
-    print("  the full Philippine scenario + sweep experiments (M5/M6).")
+    print("  the Philippine scenario and the sweep experiments.")
     print("=" * 65)
 
 
